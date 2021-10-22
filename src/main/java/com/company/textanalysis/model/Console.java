@@ -13,8 +13,8 @@ public class Console implements SelectingConsole {
     public String writeConsole(Scanner scanner) {
         String result = "", check = "";
         try {
-            Counting counting = new Count();
-            Checking checking = new Check();
+            Counting counting = new Counter();
+            Checking checking = new Checker();
             System.out.println("Write your sentence.");
             String text = scanner.nextLine();
             check = checking.determine(text);
@@ -22,8 +22,7 @@ public class Console implements SelectingConsole {
             System.out.println("Your sentence: " + text);
             result = counting.identify(text);
         } catch (Exception e) {
-            System.err.println("Console error. There was a restart.");
-            writeConsole(scanner);
+            System.err.println("Console error.");
         }
         return result;
     }

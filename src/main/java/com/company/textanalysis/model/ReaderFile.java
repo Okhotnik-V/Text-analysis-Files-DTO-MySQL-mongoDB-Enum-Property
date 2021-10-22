@@ -2,6 +2,7 @@ package com.company.textanalysis.model;
 
 import com.company.textanalysis.ui.ReadingFile;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -11,7 +12,7 @@ public class ReaderFile implements ReadingFile {
     @Override
     public String read(Scanner scanner) {
         String text = "";
-        try (java.io.FileReader reader = new java.io.FileReader("Text.txt")) {
+        try (FileReader reader = new FileReader("Text.txt")) {
             char[] buf = new char[10000];
             int i;
             System.out.println("Read file...");
@@ -22,9 +23,7 @@ public class ReaderFile implements ReadingFile {
                 text = String.valueOf(buf);
             }
         } catch (IOException ex) {
-            System.err.println("Read error. Change the content (file type). and press enter");
-            scanner.nextLine();
-            read(scanner);
+            System.err.println("Read error. Change the content (file type).");
         }
         return text;
     }

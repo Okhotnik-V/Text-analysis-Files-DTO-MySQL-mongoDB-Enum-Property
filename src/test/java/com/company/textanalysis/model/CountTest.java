@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CountTest {
-    Count count = new Count();
+    Counter count = new Counter();
 
     @Test
     void identifyTest() {
