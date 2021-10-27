@@ -6,9 +6,9 @@ Tasks
 Next:
 0. What is Enum?
 1. Create specific DTO for statistics:	
-	type of input: console, file, DB (to be stored in ENUM);
-	timestamp;
-	consonant number;
-	vowel number;
-	line/string itself.
-1.2 write every analysed lineDTO into collection of such objects.
+	1) type of input: console, file, DB (to be stored in ENUM);
+	2) timestamp;
+	3) consonant number;
+	4) vowel number;
+	5) line/string itself.
+1.2. write every analysed lineDTO into collection of such objects.
