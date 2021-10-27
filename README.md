@@ -11,4 +11,4 @@ Next:
 	3) consonant number;
 	4) vowel number;
 	5) line/string itself.
-1.2. write every analysed lineDTO into collection of such objects.
+2. write every analysed lineDTO into collection of such objects.
