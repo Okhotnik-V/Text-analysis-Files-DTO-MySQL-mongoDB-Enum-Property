@@ -1,2 +1,14 @@
-Files processing (txt).
-1. To refactor console part, so that it would additionaly has "From file" option as well as from console: read from file and save result into the file.
+Tasks
+1. Refactoring: improve namings and code itself (remove duplicates, etc). Change counter list to DTO object.
+2. Different approaches for reading from file (Java 7, Java 8, Java 11).
+3. MySQL + jdbc connector simple read from DB:
+        Install MySQL (+MySQL Workbench) locally;
+Next:
+	0. What is Enum?
+	1. Create specific DTO for statistics:	
+	    type of input: console, file, DB (to be stored in ENUM);
+		  timestamp;
+		  consonant number;
+		  vowel number;
+		  line/string itself.
+  1.2 write every analysed lineDTO into collection of such objects.
