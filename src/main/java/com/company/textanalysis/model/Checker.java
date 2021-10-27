@@ -8,27 +8,27 @@ import java.util.regex.Pattern;
 public class Checker implements Checking {
 
     @Override
-    public String determine(String text) {
+    public String determine(String textDetermine) {
         try {
             SelectedInput selectedInput = new SelectorInput();
-            boolean result;
-            if (text != null && !text.trim().isEmpty()) {
-                result = Pattern.matches("[" + "a-z A-Z" + "]" + "*", text);
+            boolean resultDetermine;
+            if (textDetermine != null && !textDetermine.trim().isEmpty()) {
+                resultDetermine = Pattern.matches("[" + "a-z A-Z" + "]" + "*", textDetermine);
             } else {
-                result = false;
+                resultDetermine = false;
                 System.out.println("Error, a sentence is entered that does not meet the requirements");
             }
             boolean correct = false;
             while (correct == false) {
-                if (result == true) {
-                    System.out.println("The sentence is correct!" + "\n" + "Your sentence: " + text + "\n" + "We process the text...");
+                if (resultDetermine == true) {
+                    System.out.println("The sentence is correct!" + "\n" + "Your sentence: " + textDetermine + "\n" + "We process the text...");
                     correct = true;
                 } else {
                     System.err.println("Change error. Change the content.");
                     selectedInput.select();
                 }
             }
-            return text;
+            return textDetermine;
         } catch (Exception e) {
             System.err.println("Error: Occurred while checking text.");
             return null;

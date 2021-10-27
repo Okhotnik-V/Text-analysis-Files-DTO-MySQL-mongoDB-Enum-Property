@@ -1,5 +1,5 @@
 package com.company.textanalysis.ui;
 
 public interface Counting {
-    String identify(String text);
+    String identify(String textIdentify, String typeInput);
 }

@@ -1,9 +1,7 @@
 package com.company.textanalysis.model;
 
-import com.company.textanalysis.ui.ReadingFile;
-import com.company.textanalysis.ui.SelectedInput;
-import com.company.textanalysis.ui.SelectingConsole;
-import com.company.textanalysis.ui.WritingFile;
+import com.company.textanalysis.enums.Inputter;
+import com.company.textanalysis.ui.*;
 
 import java.util.Scanner;
 
@@ -13,21 +11,39 @@ public class SelectorInput implements SelectedInput {
         SelectingConsole selectingConsole = new Console();
         ReadingFile readingFile = new ReaderFile();
         WritingFile writingFile = new WriterFile();
+        MySQLReading mySQLReading = new MySQLReader();
+        Counting counting = new Counter();
+        Checking checking = new Checker();
         Scanner scanner = new Scanner(System.in);
-        String result = "", text;
-        System.out.println("Press 1 to enter from the console, 2 to download from the file.");
-        switch (scanner.nextLine()) {
-            case "1":
-                result = selectingConsole.writeConsole(scanner);
+        String resultRead = "", text, check;
+        Inputter inputter = null;
+        System.out.println("Press 0 to enter from the console, 1 to download from the file, 2 to download from DB");
+
+        try {
+            inputter = Inputter.values()[scanner.nextInt()];
+        } catch (Exception e) {
+            System.err.println("Error! No number entered");
+        }
+        System.out.println("Input - " + inputter);
+        switch (inputter) {
+            case CONSOLE:
+                check = selectingConsole.writeConsole(scanner);
+                resultRead = counting.identify(check, Inputter.CONSOLE.toString());
                 break;
-            case "2":
-                text = readingFile.read(scanner);
-                result = writingFile.write(text);
+            case FILE:
+                text = readingFile.read();
+                check = checking.determine(text);
+                resultRead = counting.identify(check, Inputter.FILE.toString());
+                writingFile.write(resultRead);
+                break;
+            case DB:
+                check = checking.determine(mySQLReading.getTextDB());
+                resultRead = counting.identify(check, Inputter.DB.toString());
                 break;
             default:
-                System.out.println("Invalid number, please enter a number from 1 are 2");
+                System.out.println("Invalid number, please enter a number from 0 are 2");
                 break;
         }
-        System.out.println(result);
+        System.out.println(resultRead);
     }
 }

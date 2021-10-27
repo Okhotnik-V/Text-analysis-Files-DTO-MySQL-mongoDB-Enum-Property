@@ -13,18 +13,18 @@ class ConsoleTest {
     @Test
     public void consoleTest1() {
         Scanner scanner = new Scanner("Arsen Damon");
-        assertEquals("Counting vowels and consonants:\n" + "Vowels: 4 {1=A, 2=e, 3=a, 4=o}\n" + "Consonants: 6 {1=r, 2=s, 3=n, 4=D, 5=m, 6=n}", console.writeConsole(scanner));
+        assertEquals("[4, Vowels: A e a o , 6, Consonants: r s n D m n ]", console.writeConsole(scanner));
     }
 
     @Test
     public void consoleTest2() {
         Scanner scanner = new Scanner("GRADING");
-        assertEquals("Counting vowels and consonants:\n" + "Vowels: 2 {1=A, 2=I}\n" + "Consonants: 5 {1=G, 2=R, 3=D, 4=N, 5=G}", console.writeConsole(scanner));
+        assertEquals("[2, Vowels: A I , 5, Consonants: G R D N G ]", console.writeConsole(scanner));
     }
 
     @Test
     public void consoleTest3() {
         Scanner scanner = new Scanner("Vik Dok Luk Chuck");
-        assertEquals("Counting vowels and consonants:\n" + "Vowels: 4 {1=i, 2=o, 3=u, 4=u}\n" + "Consonants: 10 {1=V, 2=k, 3=D, 4=k, 5=L, 6=k, 7=C, 8=h, 9=c, 10=k}", console.writeConsole(scanner));
+        assertEquals("[4, Vowels: i o u u , 10, Consonants: V k D k L k C h c k ]", console.writeConsole(scanner));
     }
 }

@@ -1,9 +1,9 @@
 package com.company.textanalysis.model;
 
 import com.company.textanalysis.ui.Counting;
+import com.company.textanalysis.ui.SavingList;
+import com.company.textanalysis.ui.SavingStatistic;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,26 +12,26 @@ public class Counter implements Counting {
     private static final Pattern pattern = Pattern.compile("[" + "a A e E i I o O u U y Y" + "]");
 
     @Override
-    public String identify(String text) {
+    public String identify(String textIdentify, String typeInput) {
         try {
-            Map<Integer, String> vowelsMap = new HashMap<>();
-            Map<Integer, String> consonantsMap = new HashMap<>();
+            SavingList savingList = new SaverCollection();
+            SavingStatistic savingStatistic = new SaverStatistic();
+            String vowels = "Vowels: ", consonants = "Consonants: ";
             int vowelsQuantity = 0, consonantsQuantity = 0;
-            String replace = text.replaceAll("\\s+", "");
-            char[] textToArrey = replace.toCharArray();
-            for (int i = 0; i < textToArrey.length; i++) {
-                Matcher matcher = pattern.matcher(String.valueOf(textToArrey[i]));
+            String replace = textIdentify.replaceAll("\\s+", "");
+            char[] textToArray = replace.toCharArray();
+            for (int i = 0; i < textToArray.length; i++) {
+                Matcher matcher = pattern.matcher(String.valueOf(textToArray[i]));
                 if (matcher.find()) {
                     vowelsQuantity++;
-                    vowelsMap.put(vowelsQuantity, String.valueOf(textToArrey[i]));
+                    vowels = vowels + String.valueOf(textToArray[i]) + " ";
                 } else {
                     consonantsQuantity++;
-                    consonantsMap.put(consonantsQuantity, String.valueOf(textToArrey[i]));
+                    consonants = consonants + String.valueOf(textToArray[i]) + " ";
                 }
             }
-            return "Counting vowels and consonants:" + "\n"
-                    + "Vowels: " + vowelsQuantity + " " + vowelsMap + "\n"
-                    + "Consonants: " + consonantsQuantity + " " + consonantsMap;
+            String.valueOf(savingStatistic.saveStatistic(vowelsQuantity, consonantsQuantity, vowels, consonants, textIdentify, typeInput));
+            return String.valueOf(savingList.saveList(vowelsQuantity, consonantsQuantity, vowels, consonants));
         } catch (Exception e) {
             System.err.println("Error: Occurred while checking vowels and consonants");
             return null;

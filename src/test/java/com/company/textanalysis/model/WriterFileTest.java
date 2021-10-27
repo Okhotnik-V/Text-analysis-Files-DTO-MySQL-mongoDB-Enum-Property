@@ -9,16 +9,16 @@ class WriterFileTest {
 
     @Test
     public void writerTest1() {
-        assertEquals("Counting vowels and consonants:\n" + "Vowels: 1 {1=e}\n" + "Consonants: 3 {1=T, 2=x, 3=t}", writerFile.write("Text"));
+        assertEquals("[1, Vowels: e , 3, Consonants: T x t ]", writerFile.write("Text"));
     }
 
     @Test
     public void writerTest2() {
-        assertEquals("Counting vowels and consonants:\n" + "Vowels: 3 {1=e, 2=a, 3=e}\n" + "Consonants: 5 {1=R, 2=d, 3=t, 4=x, 5=t}", writerFile.write("Read text"));
+        assertEquals("[3, Vowels: e a e , 5, Consonants: R d t x t ]", writerFile.write("Read text"));
     }
 
     @Test
     public void writerTest3() {
-        assertEquals("Counting vowels and consonants:\n" + "Vowels: 6 {1=o, 2=o, 3=i, 4=e, 5=y, 6=e}\n" + "Consonants: 7 {1=C, 2=m, 3=p, 4=r, 5=m, 6=s, 7=s}", writerFile.write("Compromise yes"));
+        assertEquals("[6, Vowels: o o i e y e , 7, Consonants: C m p r m s s ]", writerFile.write("Compromise yes"));
     }
 }

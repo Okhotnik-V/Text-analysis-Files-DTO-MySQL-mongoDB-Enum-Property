@@ -3,13 +3,11 @@ package com.company.textanalysis.model;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ReaderFileTest {
     ReaderFile readerFile = new ReaderFile();
-    Scanner scanner = new Scanner(" ");
     String text;
 
     @Test
@@ -21,7 +19,7 @@ class ReaderFileTest {
         } catch (IOException ex) {
             System.err.println("Write error.");
         }
-        assertEquals(text, readerFile.read(scanner));
+        assertEquals(text, readerFile.read());
     }
 
     @Test
@@ -33,7 +31,7 @@ class ReaderFileTest {
         } catch (IOException ex) {
             System.err.println("Write error.");
         }
-        assertEquals(text, readerFile.read(scanner));
+        assertEquals(text, readerFile.read());
     }
 
     @Test
@@ -45,6 +43,6 @@ class ReaderFileTest {
         } catch (IOException ex) {
             System.err.println("Write error.");
         }
-        assertEquals(text, readerFile.read(scanner));
+        assertEquals(text, readerFile.read());
     }
 }

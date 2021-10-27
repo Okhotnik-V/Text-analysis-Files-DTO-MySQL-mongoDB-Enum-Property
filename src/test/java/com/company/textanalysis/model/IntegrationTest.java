@@ -13,20 +13,20 @@ class IntegrationTest {
     void integrationTest1() {
         text = "Maven Good Jobs";
         assertEquals(text, checker.determine(text));
-        assertEquals("Counting vowels and consonants:\n" + "Vowels: 5 {1=a, 2=e, 3=o, 4=o, 5=o}\n" + "Consonants: 8 {1=M, 2=v, 3=n, 4=G, 5=d, 6=J, 7=b, 8=s}", count.identify(text));
+        assertEquals("[5, Vowels: a e o o o , 8, Consonants: M v n G d J b s ]", count.identify(text, "1"));
     }
 
     @Test
     void integrationTest2() {
         text = "audi";
         assertEquals(text, checker.determine(text));
-        assertEquals("Counting vowels and consonants:\n" + "Vowels: 3 {1=a, 2=u, 3=i}\n" + "Consonants: 1 {1=d}", count.identify(text));
+        assertEquals("[3, Vowels: a u i , 1, Consonants: d ]", count.identify(text, "1"));
     }
 
     @Test
     void integrationTest3() {
         text = "Java";
         assertEquals(text, checker.determine(text));
-        assertEquals("Counting vowels and consonants:\n" + "Vowels: 2 {1=a, 2=a}\n" + "Consonants: 2 {1=J, 2=v}", count.identify(text));
+        assertEquals("[2, Vowels: a a , 2, Consonants: J v ]", count.identify(text, "1"));
     }
 }
