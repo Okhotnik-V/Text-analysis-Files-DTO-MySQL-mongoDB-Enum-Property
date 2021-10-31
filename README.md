@@ -1,1 +1,1 @@
-# Text-analysis-Files-DTO-MySQL-Enum
+# Text-analysis-Files-DTO-MySQL-Enum-Property
