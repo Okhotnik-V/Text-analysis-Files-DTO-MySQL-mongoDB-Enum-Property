@@ -3,6 +3,7 @@ package com.company.textanalysis.model;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.io.FileWriter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,7 +14,7 @@ class ReaderFileTest {
     @Test
     public void readerTest1() {
         text = "One Millions Dollar's";
-        try (java.io.FileWriter fileWriter = new java.io.FileWriter("Text.txt", false)) {
+        try (FileWriter fileWriter = new FileWriter("Text.txt", false)) {
             fileWriter.write(text);
             fileWriter.flush();
         } catch (IOException ex) {
@@ -25,7 +26,7 @@ class ReaderFileTest {
     @Test
     public void readerTest2() {
         text = "Github";
-        try (java.io.FileWriter fileWriter = new java.io.FileWriter("Text.txt", false)) {
+        try (FileWriter fileWriter = new FileWriter("Text.txt", false)) {
             fileWriter.write(text);
             fileWriter.flush();
         } catch (IOException ex) {
@@ -37,7 +38,7 @@ class ReaderFileTest {
     @Test
     public void readerTest3() {
         text = "Docker Max";
-        try (java.io.FileWriter fileWriter = new java.io.FileWriter("Text.txt", false)) {
+        try (FileWriter fileWriter = new FileWriter("Text.txt", false)) {
             fileWriter.write(text);
             fileWriter.flush();
         } catch (IOException ex) {

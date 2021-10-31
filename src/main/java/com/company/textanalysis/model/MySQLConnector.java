@@ -10,9 +10,10 @@ public class MySQLConnector implements MySQLConnecting {
     @Override
     public Connection connection() {
         try {
-            return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/textdb", "root", "okhotnik12");
+            PropertySingleton propertySingleton = PropertySingleton.getInstance();
+            return DriverManager.getConnection(propertySingleton.mysqlUrl, propertySingleton.mysqlUser, propertySingleton.mysqlPassword);
         } catch (Throwable e) {
-            System.err.println("Error Connecter MySQL");
+            System.err.println("Error Connected MySQL");
             return null;
         }
     }

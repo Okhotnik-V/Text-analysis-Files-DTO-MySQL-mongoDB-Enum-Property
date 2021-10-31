@@ -15,34 +15,24 @@ public class SelectorInput implements SelectedInput {
         Counting counting = new Counter();
         Checking checking = new Checker();
         Scanner scanner = new Scanner(System.in);
-        String resultRead = "", text, check;
-        Inputter inputter = null;
-        System.out.println("Press 0 to enter from the console, 1 to download from the file, 2 to download from DB");
 
-        try {
-            inputter = Inputter.values()[scanner.nextInt()];
-        } catch (Exception e) {
-            System.err.println("Error! No number entered");
-        }
-        System.out.println("Input - " + inputter);
-        switch (inputter) {
-            case CONSOLE:
-                check = selectingConsole.writeConsole(scanner);
-                resultRead = counting.identify(check, Inputter.CONSOLE.toString());
-                break;
-            case FILE:
-                text = readingFile.read();
-                check = checking.determine(text);
-                resultRead = counting.identify(check, Inputter.FILE.toString());
-                writingFile.write(resultRead);
-                break;
-            case DB:
-                check = checking.determine(mySQLReading.getTextDB());
-                resultRead = counting.identify(check, Inputter.DB.toString());
-                break;
-            default:
-                System.out.println("Invalid number, please enter a number from 0 are 2");
-                break;
+        System.out.println("Write the input type \"Console\", \"File\", \"Database\"");
+        String inputType = scanner.nextLine();
+        String resultRead = "", text, check;
+        if (inputType.equals(Inputter.CONSOLE.getInputer())) {
+            check = selectingConsole.writeConsole(scanner);
+            resultRead = counting.identify(check, Inputter.CONSOLE.toString());
+        } else if (inputType.equals(Inputter.FILE.getInputer())) {
+            text = readingFile.read();
+            check = checking.determine(text);
+            resultRead = counting.identify(check, Inputter.FILE.toString());
+            writingFile.write(resultRead);
+        } else if (inputType.equals(Inputter.DB.getInputer())) {
+            check = checking.determine(mySQLReading.getTextDB());
+            resultRead = counting.identify(check, Inputter.DB.toString());
+        } else {
+            System.err.println("The wrong meaning is written!");
+            select();
         }
         System.out.println(resultRead);
     }

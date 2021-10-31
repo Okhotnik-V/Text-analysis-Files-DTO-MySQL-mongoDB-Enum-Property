@@ -1,6 +1,16 @@
 package com.company.textanalysis.enums;
 
 public enum Inputter {
-    CONSOLE, FILE, DB;
+    CONSOLE("Console"), FILE("File"), DB("Database");
+
+    private final String inputer;
+
+    Inputter(String inputer) {
+        this.inputer = inputer;
+    }
+
+    public String getInputer() {
+        return inputer;
+    }
 }
 
